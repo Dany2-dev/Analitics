@@ -29,6 +29,12 @@ def zona(y):
 def enrich(df):
     df["evento_raw"] = df["event"]
     df["event"] = df["event"].apply(normalizar_evento)
-    df["carril"] = df["x"].apply(carril)
+
+    # 🔁 FLIP DEL EJE X (para que coincida con la cancha)
+    df["x_norm"] = 100 - df["x"]
+
+    df["carril"] = df["x_norm"].apply(carril)
     df["zona"] = df["y"].apply(zona)
     return df
+
+
