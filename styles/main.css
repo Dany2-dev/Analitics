@@ -1,0 +1,266 @@
+/* =========================
+   FUENTES Y VARIABLES
+   ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700;900&display=swap');
+
+:root {
+    --accent: #00CC96;
+    --accent-glow: rgba(0, 204, 150, 0.35);
+    --bg-dark: #05070a;
+    --panel: #10141d;
+    --text-muted: #9fa3b3;
+    --text-bright: #e0e6ed;
+    --danger: #ff4b4b;
+    --warn: #f7c948;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+/* =========================
+   1. ESTÉTICA GLOBAL
+   ========================= */
+html, body, .stApp {
+    background: var(--bg-dark) !important;
+    color: var(--text-bright) !important;
+}
+
+#MainMenu, footer { visibility: hidden; }
+
+header[data-testid="stHeader"] {
+    background-color: transparent !important;
+    visibility: visible !important;
+}
+
+/* Eliminar espacios vacíos de st.empty() */
+section[data-testid="stVerticalBlock"] > div:empty {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* =========================
+   2. SIDEBAR (CYBER DESIGN)
+   ========================= */
+section[data-testid="stSidebar"] {
+    background: var(--bg-dark) !important;
+    border-right: 1px solid rgba(0, 204, 150, 0.3) !important;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    gap: 0.6rem !important;
+    padding: 2rem 1rem !important;
+}
+
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] label {
+    font-family: 'Rajdhani', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: var(--accent) !important;
+    font-weight: 700 !important;
+}
+
+/* Estilo para inputs en Sidebar */
+div[data-baseweb="select"], div[data-baseweb="input"] {
+    background: var(--panel) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 8px !important;
+}
+
+/* =========================
+   3. HEADER Y TÍTULOS
+   ========================= */
+.main-header-wrapper {
+    margin: 1rem 0 3rem 0;
+}
+
+/* CORRECCIÓN PARA TÍTULOS CON DEGRADADO */
+.main-title {
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 3.8rem !important;
+    font-weight: 900 !important;
+    
+    /* 1. Definir el degradado */
+    background: linear-gradient(90deg, #ffffff 20%, #00CC96 100%) !important;
+    
+    /* 2. Aplicar el recorte (Standard y Webkit) */
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    
+    /* 3. HACER EL TEXTO TRANSPARENTE (Crucial) */
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important; 
+    
+    line-height: 1.1 !important;
+    display: block !important;
+}
+
+.section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+    margin-bottom: 20px !important;
+}
+
+/* =========================
+   4. CONTENEDORES Y SECCIONES
+   ========================= */
+.section {
+    background: linear-gradient(145deg, #0f1219, #161a23) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-radius: 16px !important;
+    padding: 25px !important;
+    margin-bottom: 25px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   5. KPI CARDS (OPTIMIZADO)
+   ========================= */
+.kpi-card {
+    background: var(--panel) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.kpi-card:hover {
+    border-color: var(--accent) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 204, 150, 0.15) !important;
+}
+
+.kpi-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 48px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    line-height: 1;
+}
+
+.kpi-label {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase;
+    color: var(--text-muted) !important;
+}
+
+/* Variantes de color */
+.kpi-green  { border-bottom: 4px solid var(--accent); }
+.kpi-red    { border-bottom: 4px solid var(--danger); }
+.kpi-yellow { border-bottom: 4px solid var(--warn); }
+
+/* =========================
+   6. BOTONES Y SELECTORES
+   ========================= */
+button[kind="secondary"] {
+    background: var(--glass) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(8px);
+}
+
+button[kind="secondary"]:hover {
+    border-color: var(--accent) !important;
+    background: rgba(0, 204, 150, 0.05) !important;
+    transform: scale(1.03);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Fix para el borde azul de Streamlit en botones */
+button:focus:not(:active) {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 10px var(--accent-glow) !important;
+    color: var(--accent) !important;
+}
+
+/* =========================
+   7. GRÁFICOS Y SCROLL
+   ========================= */
+.stPlotlyChart {
+    background: transparent !important;
+    border-radius: 15px;
+    overflow: hidden !important;
+}
+
+/* Ocultar scrollbars globalmente manteniendo funcionalidad */
+*::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #2a2e3d;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2e3d var(--bg-dark);
+}
+
+/* === TEAM TILE HOVER === */
+.stImage img {
+    transition: all 0.3s ease-in-out !important;
+}
+
+.stImage:hover img {
+    transform: scale(1.1) translateY(-5px);
+    filter: drop-shadow(0 5px 15px var(--accent-glow));
+}
+/* =========================
+   SKELETON LOADER
+   ========================= */
+
+.skeleton {
+    height: 110px;
+    border-radius: 14px;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.05) 25%,
+        rgba(255,255,255,0.12) 37%,
+        rgba(255,255,255,0.05) 63%
+    );
+    background-size: 400% 100%;
+    animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+/* =========================
+   TEAM TILE ANIMATION
+   ========================= */
+
+.team-tile {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    animation: tile-in 0.35s ease forwards;
+}
+
+@keyframes tile-in {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

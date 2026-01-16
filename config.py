@@ -1,0 +1,3 @@
+APP_TITLE = "Mineros BI"
+WINDOW_SIZE = "1200x750"
+BG_COLOR = "#1e1e1e"
